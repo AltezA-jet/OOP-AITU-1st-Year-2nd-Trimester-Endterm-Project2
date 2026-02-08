@@ -12,6 +12,15 @@ public abstract class Media {
 
     private String title;
 
+    // ОБЯЗАТЕЛЬНО для JPA
+    public Media() {
+    }
+
+    // ДЛЯ Song / Podcast
+    public Media(String title) {
+        this.title = title;
+    }
+
     public Long getId() {
         return id;
     }

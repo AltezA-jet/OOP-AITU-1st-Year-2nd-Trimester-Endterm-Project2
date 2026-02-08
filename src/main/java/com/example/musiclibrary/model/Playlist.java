@@ -16,7 +16,7 @@ public class Playlist {
     @ManyToMany
     private List<Media> mediaList = new ArrayList<>();
 
-    public Playlist() {}
+    protected Playlist() {}
 
     public Playlist(String name) {
         this.name = name;

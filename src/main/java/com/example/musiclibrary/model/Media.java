@@ -2,7 +2,8 @@ package com.example.musiclibrary.model;
 
 import jakarta.persistence.*;
 
-@MappedSuperclass
+@Entity
+@Inheritance(strategy = InheritanceType.JOINED)
 public abstract class Media {
 
     @Id
@@ -11,9 +12,9 @@ public abstract class Media {
 
     private String title;
 
-    public Media() {}
+    protected Media() {}
 
-    public Media(String title) {
+    protected Media(String title) {
         this.title = title;
     }
 

@@ -1,6 +1,7 @@
 C:\Users\altez\Documents\OOP-AITU-1st-Year-2nd-Trimester-Endterm-Project\src\main\java\com\example\musiclibrary\config\AppConfig.java
 C:\Users\altez\Documents\OOP-AITU-1st-Year-2nd-Trimester-Endterm-Project\src\main\java\com\example\musiclibrary\controller\MediaController.java
 C:\Users\altez\Documents\OOP-AITU-1st-Year-2nd-Trimester-Endterm-Project\src\main\java\com\example\musiclibrary\controller\PlaylistController.java
+C:\Users\altez\Documents\OOP-AITU-1st-Year-2nd-Trimester-Endterm-Project\src\main\java\com\example\musiclibrary\controller\PodcastController.java
 C:\Users\altez\Documents\OOP-AITU-1st-Year-2nd-Trimester-Endterm-Project\src\main\java\com\example\musiclibrary\controller\SongController.java
 C:\Users\altez\Documents\OOP-AITU-1st-Year-2nd-Trimester-Endterm-Project\src\main\java\com\example\musiclibrary\dto\SongDto.java
 C:\Users\altez\Documents\OOP-AITU-1st-Year-2nd-Trimester-Endterm-Project\src\main\java\com\example\musiclibrary\exception\GlobalExceptionHandler.java
@@ -14,7 +15,9 @@ C:\Users\altez\Documents\OOP-AITU-1st-Year-2nd-Trimester-Endterm-Project\src\mai
 C:\Users\altez\Documents\OOP-AITU-1st-Year-2nd-Trimester-Endterm-Project\src\main\java\com\example\musiclibrary\MusicLibraryApplication.java
 C:\Users\altez\Documents\OOP-AITU-1st-Year-2nd-Trimester-Endterm-Project\src\main\java\com\example\musiclibrary\repository\MediaRepository.java
 C:\Users\altez\Documents\OOP-AITU-1st-Year-2nd-Trimester-Endterm-Project\src\main\java\com\example\musiclibrary\repository\PlaylistRepository.java
+C:\Users\altez\Documents\OOP-AITU-1st-Year-2nd-Trimester-Endterm-Project\src\main\java\com\example\musiclibrary\repository\PodcastRepository.java
 C:\Users\altez\Documents\OOP-AITU-1st-Year-2nd-Trimester-Endterm-Project\src\main\java\com\example\musiclibrary\repository\SongRepository.java
 C:\Users\altez\Documents\OOP-AITU-1st-Year-2nd-Trimester-Endterm-Project\src\main\java\com\example\musiclibrary\service\MediaService.java
 C:\Users\altez\Documents\OOP-AITU-1st-Year-2nd-Trimester-Endterm-Project\src\main\java\com\example\musiclibrary\service\PlaylistService.java
+C:\Users\altez\Documents\OOP-AITU-1st-Year-2nd-Trimester-Endterm-Project\src\main\java\com\example\musiclibrary\service\PodcastService.java
 C:\Users\altez\Documents\OOP-AITU-1st-Year-2nd-Trimester-Endterm-Project\src\main\java\com\example\musiclibrary\service\SongService.java

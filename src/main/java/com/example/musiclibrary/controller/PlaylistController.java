@@ -17,13 +17,18 @@ public class PlaylistController {
     }
 
     @PostMapping
-    public Playlist create(@RequestParam String name) {
-        return playlistService.create(name);
+    public Playlist create(@RequestBody Playlist playlist) {
+        return playlistService.create(playlist.getName());
     }
 
     @GetMapping
     public List<Playlist> getAll() {
         return playlistService.getAll();
+    }
+
+    @GetMapping("/{id}")
+    public Playlist getById(@PathVariable Long id) {
+        return playlistService.getById(id);
     }
 
     @PostMapping("/{playlistId}/media/{mediaId}")

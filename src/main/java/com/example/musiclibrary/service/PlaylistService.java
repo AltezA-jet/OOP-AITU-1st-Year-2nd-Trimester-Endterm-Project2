@@ -32,12 +32,15 @@ public class PlaylistService {
         return playlistRepository.findAll();
     }
 
-    public Playlist addMedia(Long playlistId, Long mediaId) {
-        Playlist playlist = playlistRepository.findById(playlistId)
-                .orElseThrow();
+    public Playlist getById(Long id) {
+        return playlistRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Playlist not found"));
+    }
 
+    public Playlist addMedia(Long playlistId, Long mediaId) {
+        Playlist playlist = getById(playlistId);
         Media media = mediaRepository.findById(mediaId)
-                .orElseThrow();
+                .orElseThrow(() -> new RuntimeException("Media not found"));
 
         playlist.getMediaList().add(media);
         return playlistRepository.save(playlist);

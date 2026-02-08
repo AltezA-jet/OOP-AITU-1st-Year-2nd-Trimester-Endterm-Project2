@@ -1,7 +1,7 @@
 package com.example.musiclibrary.controller;
 
 import com.example.musiclibrary.model.Podcast;
-import com.example.musiclibrary.repository.PodcastRepository;
+import com.example.musiclibrary.service.PodcastService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;

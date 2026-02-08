@@ -7,7 +7,7 @@ public class Podcast extends Media {
 
     private String host;
 
-    protected Podcast() {}
+    public Podcast() {}
 
     public Podcast(String title, String host) {
         super(title);
@@ -16,5 +16,9 @@ public class Podcast extends Media {
 
     public String getHost() {
         return host;
+    }
+
+    public void setHost(String host) {
+        this.host = host;
     }
 }

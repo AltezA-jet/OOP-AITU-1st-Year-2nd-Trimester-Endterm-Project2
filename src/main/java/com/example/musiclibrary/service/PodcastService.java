@@ -30,7 +30,7 @@ public class PodcastService {
     public Podcast update(Long id, Podcast updated) {
         Podcast podcast = getById(id);
         podcast.setTitle(updated.getTitle());
-        podcast.setCategory(updated.getCategory());
+        podcast.setHost(updated.getHost());
         return podcastRepository.save(podcast);
     }
 

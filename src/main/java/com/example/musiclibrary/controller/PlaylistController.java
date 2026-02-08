@@ -1,5 +1,6 @@
 package com.example.musiclibrary.controller;
 
+import com.example.musiclibrary.model.Media;
 import com.example.musiclibrary.model.Playlist;
 import com.example.musiclibrary.service.PlaylistService;
 import org.springframework.web.bind.annotation.*;
@@ -26,9 +27,11 @@ public class PlaylistController {
         return playlistService.getAll();
     }
 
-    @PostMapping("/{playlistId}/media/{mediaId}")
-    public Playlist addMedia(@PathVariable Long playlistId,
-                             @PathVariable Long mediaId) {
-        return playlistService.addMedia(playlistId, mediaId);
+    @PostMapping("/{id}/media")
+    public void addMedia(
+            @PathVariable Long id,
+            @RequestBody Media media
+    ) {
+        playlistService.addMedia(id, media);
     }
 }

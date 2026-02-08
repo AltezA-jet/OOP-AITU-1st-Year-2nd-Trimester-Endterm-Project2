@@ -14,17 +14,13 @@ public class PlaylistService {
     private final PlaylistRepository playlistRepository;
     private final MediaRepository mediaRepository;
 
-    public PlaylistService(
-            PlaylistRepository playlistRepository,
-            MediaRepository mediaRepository
-    ) {
+    public PlaylistService(PlaylistRepository playlistRepository,
+                           MediaRepository mediaRepository) {
         this.playlistRepository = playlistRepository;
         this.mediaRepository = mediaRepository;
     }
 
-    public Playlist create(String name) {
-        Playlist playlist = new Playlist();
-        playlist.setName(name);
+    public Playlist create(Playlist playlist) {
         return playlistRepository.save(playlist);
     }
 
@@ -33,16 +29,30 @@ public class PlaylistService {
     }
 
     public Playlist getById(Long id) {
-        return playlistRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Playlist not found"));
+        return playlistRepository.findById(id).orElseThrow();
+    }
+
+    public Playlist update(Long id, Playlist updated) {
+        Playlist playlist = getById(id);
+        playlist.setName(updated.getName());
+        return playlistRepository.save(playlist);
+    }
+
+    public void delete(Long id) {
+        playlistRepository.deleteById(id);
     }
 
     public Playlist addMedia(Long playlistId, Long mediaId) {
         Playlist playlist = getById(playlistId);
-        Media media = mediaRepository.findById(mediaId)
-                .orElseThrow(() -> new RuntimeException("Media not found"));
-
+        Media media = mediaRepository.findById(mediaId).orElseThrow();
         playlist.getMediaList().add(media);
+        return playlistRepository.save(playlist);
+    }
+
+    public Playlist removeMedia(Long playlistId, Long mediaId) {
+        Playlist playlist = getById(playlistId);
+        Media media = mediaRepository.findById(mediaId).orElseThrow();
+        playlist.getMediaList().remove(media);
         return playlistRepository.save(playlist);
     }
 }

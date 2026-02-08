@@ -10,29 +10,39 @@ import java.util.List;
 @RequestMapping("/songs")
 public class SongController {
 
-    private final SongService service;
+    private final SongService songService;
 
-    public SongController(SongService service) {
-        this.service = service;
+    public SongController(SongService songService) {
+        this.songService = songService;
     }
 
-    @GetMapping
-    public List<Song> getAll() {
-        return service.getAllSongs();
-    }
-
-    @GetMapping("/{id}")
-    public Song getById(@PathVariable Long id) {
-        return service.getSongById(id);
-    }
-
+    // CREATE
     @PostMapping
     public Song create(@RequestBody Song song) {
-        return service.createSong(song);
+        return songService.create(song);
     }
 
+    // READ ALL
+    @GetMapping
+    public List<Song> getAll() {
+        return songService.getAll();
+    }
+
+    // READ BY ID
+    @GetMapping("/{id}")
+    public Song getById(@PathVariable Long id) {
+        return songService.getById(id);
+    }
+
+    // UPDATE
+    @PutMapping("/{id}")
+    public Song update(@PathVariable Long id, @RequestBody Song song) {
+        return songService.update(id, song);
+    }
+
+    // DELETE
     @DeleteMapping("/{id}")
     public void delete(@PathVariable Long id) {
-        service.deleteSong(id);
+        songService.delete(id);
     }
 }

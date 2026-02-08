@@ -10,19 +10,34 @@ import java.util.List;
 @RequestMapping("/podcasts")
 public class PodcastController {
 
-    private final PodcastRepository podcastRepository;
+    private final PodcastService podcastService;
 
-    public PodcastController(PodcastRepository podcastRepository) {
-        this.podcastRepository = podcastRepository;
-    }
-
-    @GetMapping
-    public List<Podcast> getAll() {
-        return podcastRepository.saveAll(podcastRepository.findAll());
+    public PodcastController(PodcastService podcastService) {
+        this.podcastService = podcastService;
     }
 
     @PostMapping
     public Podcast create(@RequestBody Podcast podcast) {
-        return podcastRepository.save(podcast);
+        return podcastService.create(podcast);
+    }
+
+    @GetMapping
+    public List<Podcast> getAll() {
+        return podcastService.getAll();
+    }
+
+    @GetMapping("/{id}")
+    public Podcast getById(@PathVariable Long id) {
+        return podcastService.getById(id);
+    }
+
+    @PutMapping("/{id}")
+    public Podcast update(@PathVariable Long id, @RequestBody Podcast podcast) {
+        return podcastService.update(id, podcast);
+    }
+
+    @DeleteMapping("/{id}")
+    public void delete(@PathVariable Long id) {
+        podcastService.delete(id);
     }
 }

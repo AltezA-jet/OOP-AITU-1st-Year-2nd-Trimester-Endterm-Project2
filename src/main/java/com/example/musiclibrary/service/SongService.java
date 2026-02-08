@@ -15,20 +15,26 @@ public class SongService {
         this.songRepository = songRepository;
     }
 
-    public List<Song> getAllSongs() {
-        return songRepository.findAll();
-    }
-
-    public Song getSongById(Long id) {
-        return songRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Song not found"));
-    }
-
-    public Song createSong(Song song) {
+    public Song create(Song song) {
         return songRepository.save(song);
     }
 
-    public void deleteSong(Long id) {
+    public List<Song> getAll() {
+        return songRepository.findAll();
+    }
+
+    public Song getById(Long id) {
+        return songRepository.findById(id).orElseThrow();
+    }
+
+    public Song update(Long id, Song updated) {
+        Song song = getById(id);
+        song.setTitle(updated.getTitle());
+        song.setArtist(updated.getArtist());
+        return songRepository.save(song);
+    }
+
+    public void delete(Long id) {
         songRepository.deleteById(id);
     }
 }

@@ -15,11 +15,26 @@ public class PodcastService {
         this.podcastRepository = podcastRepository;
     }
 
+    public Podcast create(Podcast podcast) {
+        return podcastRepository.save(podcast);
+    }
+
     public List<Podcast> getAll() {
         return podcastRepository.findAll();
     }
 
-    public Podcast create(Podcast podcast) {
+    public Podcast getById(Long id) {
+        return podcastRepository.findById(id).orElseThrow();
+    }
+
+    public Podcast update(Long id, Podcast updated) {
+        Podcast podcast = getById(id);
+        podcast.setTitle(updated.getTitle());
+        podcast.setCategory(updated.getCategory());
         return podcastRepository.save(podcast);
+    }
+
+    public void delete(Long id) {
+        podcastRepository.deleteById(id);
     }
 }

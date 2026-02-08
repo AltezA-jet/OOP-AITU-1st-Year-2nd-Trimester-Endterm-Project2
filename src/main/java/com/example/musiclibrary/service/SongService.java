@@ -22,6 +22,9 @@ public class SongService {
     public List<Song> getAll() {
         return songRepository.findAll();
     }
+    public List<Song> findAll() {
+        return songRepository.findAll();
+    }
 
     public Song getById(Long id) {
         return songRepository.findById(id).orElseThrow();

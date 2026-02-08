@@ -12,17 +12,15 @@ public abstract class Media {
 
     private String title;
 
-    protected Media() {}
-
-    protected Media(String title) {
-        this.title = title;
-    }
-
     public Long getId() {
         return id;
     }
 
     public String getTitle() {
         return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
     }
 }

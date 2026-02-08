@@ -2,35 +2,44 @@ package com.example.musiclibrary.service;
 
 import com.example.musiclibrary.model.Media;
 import com.example.musiclibrary.model.Playlist;
+import com.example.musiclibrary.repository.MediaRepository;
+import com.example.musiclibrary.repository.PlaylistRepository;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
 public class PlaylistService {
 
-    private final List<Playlist> playlists = new ArrayList<>();
+    private final PlaylistRepository playlistRepository;
+    private final MediaRepository mediaRepository;
+
+    public PlaylistService(
+            PlaylistRepository playlistRepository,
+            MediaRepository mediaRepository
+    ) {
+        this.playlistRepository = playlistRepository;
+        this.mediaRepository = mediaRepository;
+    }
 
     public Playlist create(String name) {
-        Playlist playlist = new Playlist(name);
-        playlists.add(playlist);
-        return playlist;
+        Playlist playlist = new Playlist();
+        playlist.setName(name);
+        return playlistRepository.save(playlist);
     }
 
     public List<Playlist> getAll() {
-        return playlists;
+        return playlistRepository.findAll();
     }
 
-    public Playlist getById(Long id) {
-        return playlists.stream()
-                .filter(p -> p.getId().equals(id))
-                .findFirst()
-                .orElseThrow(() -> new RuntimeException("Playlist not found"));
-    }
+    public Playlist addMedia(Long playlistId, Long mediaId) {
+        Playlist playlist = playlistRepository.findById(playlistId)
+                .orElseThrow();
 
-    public void addMedia(Long playlistId, Media media) {
-        Playlist playlist = getById(playlistId);
-        playlist.addMedia(media);
+        Media media = mediaRepository.findById(mediaId)
+                .orElseThrow();
+
+        playlist.getMediaList().add(media);
+        return playlistRepository.save(playlist);
     }
 }

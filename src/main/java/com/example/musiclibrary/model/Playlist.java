@@ -16,12 +16,6 @@ public class Playlist {
     @ManyToMany
     private List<Media> mediaList = new ArrayList<>();
 
-    protected Playlist() {}
-
-    public Playlist(String name) {
-        this.name = name;
-    }
-
     public Long getId() {
         return id;
     }
@@ -34,7 +28,7 @@ public class Playlist {
         return mediaList;
     }
 
-    public void addMedia(Media media) {
-        mediaList.add(media);
+    public void setName(String name) {
+        this.name = name;
     }
 }

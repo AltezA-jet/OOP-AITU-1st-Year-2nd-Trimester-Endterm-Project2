@@ -29,10 +29,15 @@ public class PodcastService {
 
     public Podcast update(Long id, Podcast updated) {
         Podcast podcast = getById(id);
+
         podcast.setTitle(updated.getTitle());
         podcast.setHost(updated.getHost());
+        podcast.setDurationMinutes(updated.getDurationMinutes());
+        podcast.setReleaseDate(updated.getReleaseDate());
+
         return podcastRepository.save(podcast);
     }
+
 
     public void delete(Long id) {
         podcastRepository.deleteById(id);

@@ -1,16 +1,20 @@
 package com.example.musiclibrary.factory;
 
-import com.example.musiclibrary.model.Media;
-import com.example.musiclibrary.model.Podcast;
-import com.example.musiclibrary.model.Song;
+import com.example.musiclibrary.model.*;
+import java.time.LocalDate;
 
 public class MediaFactory {
 
-    public static Media createMedia(String type, String title, String extra,String songalbum) {
-        return switch (type.toLowerCase()) {
-            case "song" -> new Song(title, extra,songalbum);      // extra = artist
-            case "podcast" -> new Podcast(title, extra); // extra = host
-            default -> throw new IllegalArgumentException("Unknown media type");
+    public static Media createMedia(
+            MediaType type,
+            String title,
+            Artist artist,
+            String genre,
+            Album album
+    ) {
+        return switch (type) {
+            case SONG -> new Song(title, artist, genre, album);
+            case PODCAST -> new Podcast(title, artist.getName(),120,LocalDate.now());
         };
     }
 }

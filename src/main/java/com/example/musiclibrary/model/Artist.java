@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 import java.util.List;
 
 @Entity
-public class Album {
+public class Artist {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -12,17 +12,16 @@ public class Album {
 
     private String name;
 
-    @ManyToOne
-    private Artist artist;
+    @OneToMany(mappedBy = "artist")
+    private List<Album> albums;
 
-    @OneToMany(mappedBy = "album")
+    @OneToMany(mappedBy = "artist")
     private List<Song> songs;
 
-    public Album() {}
+    public Artist() {}
 
-    public Album(String name, Artist artist) {
+    public Artist(String name) {
         this.name = name;
-        this.artist = artist;
     }
 
     public Long getId() {
@@ -33,8 +32,8 @@ public class Album {
         return name;
     }
 
-    public Artist getArtist() {
-        return artist;
+    public List<Album> getAlbums() {
+        return albums;
     }
 
     public List<Song> getSongs() {
@@ -43,9 +42,5 @@ public class Album {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public void setArtist(Artist artist) {
-        this.artist = artist;
     }
 }

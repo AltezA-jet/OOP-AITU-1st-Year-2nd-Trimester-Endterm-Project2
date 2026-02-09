@@ -1,7 +1,7 @@
 package com.example.musiclibrary.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
-import java.util.List;
 
 @Entity
 public class Album {
@@ -13,17 +13,11 @@ public class Album {
     private String name;
 
     @ManyToOne
+    @JoinColumn(name = "artist_id")
+    @JsonBackReference
     private Artist artist;
 
-    @OneToMany(mappedBy = "album")
-    private List<Song> songs;
-
-    public Album() {}
-
-    public Album(String name, Artist artist) {
-        this.name = name;
-        this.artist = artist;
-    }
+    // ===== getters / setters =====
 
     public Long getId() {
         return id;
@@ -35,10 +29,6 @@ public class Album {
 
     public Artist getArtist() {
         return artist;
-    }
-
-    public List<Song> getSongs() {
-        return songs;
     }
 
     public void setName(String name) {

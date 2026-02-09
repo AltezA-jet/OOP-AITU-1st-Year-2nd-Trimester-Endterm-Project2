@@ -1,6 +1,9 @@
 package com.example.musiclibrary.model;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
+
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -12,17 +15,15 @@ public class Artist {
 
     private String name;
 
-    @OneToMany(mappedBy = "artist")
-    private List<Album> albums;
+    @OneToMany(
+            mappedBy = "artist",
+            cascade = CascadeType.ALL,
+            orphanRemoval = true
+    )
+    @JsonManagedReference
+    private List<Album> albums = new ArrayList<>();
 
-    @OneToMany(mappedBy = "artist")
-    private List<Song> songs;
-
-    public Artist() {}
-
-    public Artist(String name) {
-        this.name = name;
-    }
+    // ===== getters / setters =====
 
     public Long getId() {
         return id;
@@ -36,11 +37,18 @@ public class Artist {
         return albums;
     }
 
-    public List<Song> getSongs() {
-        return songs;
-    }
-
     public void setName(String name) {
         this.name = name;
+    }
+
+    
+    public void addAlbum(Album album) {
+        albums.add(album);
+        album.setArtist(this);
+    }
+
+    public void removeAlbum(Album album) {
+        albums.remove(album);
+        album.setArtist(null);
     }
 }

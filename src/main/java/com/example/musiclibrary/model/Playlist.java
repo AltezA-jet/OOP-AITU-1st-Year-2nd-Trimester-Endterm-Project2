@@ -36,4 +36,7 @@ public class Playlist {
     public void setName(String name) {
         this.name = name;
     }
+    public void setMediaList(List<Media> mediaList) {
+        this.mediaList = mediaList;
+    }
 }

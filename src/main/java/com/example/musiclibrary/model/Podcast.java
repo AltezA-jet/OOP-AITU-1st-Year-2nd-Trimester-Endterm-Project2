@@ -10,7 +10,9 @@ public class Podcast extends Media {
     private int durationMinutes;
     private LocalDate releaseDate;
 
-    public Podcast() {}
+    protected Podcast() {
+        // JPA
+    }
 
     public Podcast(
             String title,

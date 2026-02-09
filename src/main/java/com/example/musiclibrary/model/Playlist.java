@@ -14,6 +14,11 @@ public class Playlist {
     private String name;
 
     @ManyToMany
+    @JoinTable(
+        name = "playlist_media",
+        joinColumns = @JoinColumn(name = "playlist_id"),
+        inverseJoinColumns = @JoinColumn(name = "media_id")
+    )
     private List<Media> mediaList = new ArrayList<>();
 
     public Long getId() {

@@ -1,5 +1,6 @@
 C:\Users\altez\Documents\OOP-AITU-1st-Year-2nd-Trimester-Endterm-Project2\src\main\java\com\example\musiclibrary\config\AppConfig.java
 C:\Users\altez\Documents\OOP-AITU-1st-Year-2nd-Trimester-Endterm-Project2\src\main\java\com\example\musiclibrary\controller\AlbumController.java
+C:\Users\altez\Documents\OOP-AITU-1st-Year-2nd-Trimester-Endterm-Project2\src\main\java\com\example\musiclibrary\controller\ArtistController.java
 C:\Users\altez\Documents\OOP-AITU-1st-Year-2nd-Trimester-Endterm-Project2\src\main\java\com\example\musiclibrary\controller\MediaController.java
 C:\Users\altez\Documents\OOP-AITU-1st-Year-2nd-Trimester-Endterm-Project2\src\main\java\com\example\musiclibrary\controller\PlaylistController.java
 C:\Users\altez\Documents\OOP-AITU-1st-Year-2nd-Trimester-Endterm-Project2\src\main\java\com\example\musiclibrary\controller\PodcastController.java
@@ -10,17 +11,20 @@ C:\Users\altez\Documents\OOP-AITU-1st-Year-2nd-Trimester-Endterm-Project2\src\ma
 C:\Users\altez\Documents\OOP-AITU-1st-Year-2nd-Trimester-Endterm-Project2\src\main\java\com\example\musiclibrary\factory\MediaFactory.java
 C:\Users\altez\Documents\OOP-AITU-1st-Year-2nd-Trimester-Endterm-Project2\src\main\java\com\example\musiclibrary\factory\MediaType.java
 C:\Users\altez\Documents\OOP-AITU-1st-Year-2nd-Trimester-Endterm-Project2\src\main\java\com\example\musiclibrary\model\Album.java
+C:\Users\altez\Documents\OOP-AITU-1st-Year-2nd-Trimester-Endterm-Project2\src\main\java\com\example\musiclibrary\model\Artist.java
 C:\Users\altez\Documents\OOP-AITU-1st-Year-2nd-Trimester-Endterm-Project2\src\main\java\com\example\musiclibrary\model\Media.java
 C:\Users\altez\Documents\OOP-AITU-1st-Year-2nd-Trimester-Endterm-Project2\src\main\java\com\example\musiclibrary\model\Playlist.java
 C:\Users\altez\Documents\OOP-AITU-1st-Year-2nd-Trimester-Endterm-Project2\src\main\java\com\example\musiclibrary\model\Podcast.java
 C:\Users\altez\Documents\OOP-AITU-1st-Year-2nd-Trimester-Endterm-Project2\src\main\java\com\example\musiclibrary\model\Song.java
 C:\Users\altez\Documents\OOP-AITU-1st-Year-2nd-Trimester-Endterm-Project2\src\main\java\com\example\musiclibrary\MusicLibraryApplication.java
 C:\Users\altez\Documents\OOP-AITU-1st-Year-2nd-Trimester-Endterm-Project2\src\main\java\com\example\musiclibrary\repository\AlbumRepository.java
+C:\Users\altez\Documents\OOP-AITU-1st-Year-2nd-Trimester-Endterm-Project2\src\main\java\com\example\musiclibrary\repository\ArtistRepository.java
 C:\Users\altez\Documents\OOP-AITU-1st-Year-2nd-Trimester-Endterm-Project2\src\main\java\com\example\musiclibrary\repository\MediaRepository.java
 C:\Users\altez\Documents\OOP-AITU-1st-Year-2nd-Trimester-Endterm-Project2\src\main\java\com\example\musiclibrary\repository\PlaylistRepository.java
 C:\Users\altez\Documents\OOP-AITU-1st-Year-2nd-Trimester-Endterm-Project2\src\main\java\com\example\musiclibrary\repository\PodcastRepository.java
 C:\Users\altez\Documents\OOP-AITU-1st-Year-2nd-Trimester-Endterm-Project2\src\main\java\com\example\musiclibrary\repository\SongRepository.java
 C:\Users\altez\Documents\OOP-AITU-1st-Year-2nd-Trimester-Endterm-Project2\src\main\java\com\example\musiclibrary\service\AlbumService.java
+C:\Users\altez\Documents\OOP-AITU-1st-Year-2nd-Trimester-Endterm-Project2\src\main\java\com\example\musiclibrary\service\ArtistService.java
 C:\Users\altez\Documents\OOP-AITU-1st-Year-2nd-Trimester-Endterm-Project2\src\main\java\com\example\musiclibrary\service\MediaService.java
 C:\Users\altez\Documents\OOP-AITU-1st-Year-2nd-Trimester-Endterm-Project2\src\main\java\com\example\musiclibrary\service\PlaylistService.java
 C:\Users\altez\Documents\OOP-AITU-1st-Year-2nd-Trimester-Endterm-Project2\src\main\java\com\example\musiclibrary\service\PodcastService.java

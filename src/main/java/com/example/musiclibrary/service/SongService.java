@@ -34,6 +34,7 @@ public class SongService {
         Song song = getById(id);
         song.setTitle(updated.getTitle());
         song.setArtist(updated.getArtist());
+        song.setAlbum(updated.getAlbum());
         return songRepository.save(song);
     }
 

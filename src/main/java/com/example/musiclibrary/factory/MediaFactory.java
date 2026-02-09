@@ -6,9 +6,9 @@ import com.example.musiclibrary.model.Song;
 
 public class MediaFactory {
 
-    public static Media createMedia(String type, String title, String extra) {
+    public static Media createMedia(String type, String title, String extra,String songalbum) {
         return switch (type.toLowerCase()) {
-            case "song" -> new Song(title, extra);      // extra = artist
+            case "song" -> new Song(title, extra,songalbum);      // extra = artist
             case "podcast" -> new Podcast(title, extra); // extra = host
             default -> throw new IllegalArgumentException("Unknown media type");
         };

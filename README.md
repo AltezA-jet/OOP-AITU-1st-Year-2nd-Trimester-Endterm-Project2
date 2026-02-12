@@ -208,6 +208,200 @@ mvn clean spring-boot:run
         maintainability, and scalability in real backend systems.
     </p>
 </div>
+<h1>Bonus Task — Simple In-Memory Caching Layer</h1>
+
+<p>
+This section describes the implementation of a <b>simple in-memory caching mechanism</b>
+added to the Music Library REST API to improve performance for frequently accessed data.
+</p>
+
+<div class="note">
+<b>Defense focus:</b><br>
+This bonus task demonstrates understanding of the <b>Singleton pattern</b>,
+<b>performance optimization</b>, and <b>clean integration into layered architecture</b>.
+</div>
+
+<hr>
+
+<h2>1. Objective</h2>
+
+<p>
+The goal of this task is to reduce unnecessary database calls by caching
+frequently requested data in memory.
+</p>
+
+<p>
+In this project, caching is applied to methods like:
+</p>
+
+<ul>
+    <li><code>getAllSongs()</code></li>
+    <li><code>getAllAlbums()</code></li>
+    <li><code>getAllArtists()</code></li>
+    <li><code>getAllPlaylists()</code></li>
+</ul>
+
+<hr>
+
+<h2>2. Cache Design</h2>
+
+<p>
+The cache is implemented as a <b>Singleton</b> to guarantee that:
+</p>
+
+<ul>
+    <li>Only one cache instance exists</li>
+    <li>All services share the same cached data</li>
+    <li>Memory usage is controlled</li>
+</ul>
+
+<h3>SimpleCache Class</h3>
+
+<pre>
+package com.example.musiclibrary.cache;
+
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
+
+public class SimpleCache {
+
+    private static SimpleCache instance;
+    private final Map<String, Object> cache = new ConcurrentHashMap<>();
+
+    private SimpleCache() {}
+
+    public static synchronized SimpleCache getInstance() {
+        if (instance == null) {
+            instance = new SimpleCache();
+        }
+        return instance;
+    }
+
+    public Object get(String key) {
+        return cache.get(key);
+    }
+
+    public void put(String key, Object value) {
+        cache.put(key, value);
+    }
+
+    public void remove(String key) {
+        cache.remove(key);
+    }
+
+    public void clear() {
+        cache.clear();
+    }
+}
+</pre>
+
+<div class="note">
+<b>Defense explanation:</b><br>
+Singleton is required because the cache represents shared application state.
+Multiple cache instances would break consistency.
+</div>
+
+<hr>
+
+<h2>3. Cache Usage in Service Layer</h2>
+
+<p>
+Caching is applied <b>only in the service layer</b>,
+so the layered architecture remains intact.
+</p>
+
+<h3>Example: SongService (getAll)</h3>
+
+<pre>
+public List&lt;Song&gt; getAll() {
+    SimpleCache cache = SimpleCache.getInstance();
+    String key = "songs_all";
+
+    if (cache.get(key) != null) {
+        return (List&lt;Song&gt;) cache.get(key);
+    }
+
+    List&lt;Song&gt; songs = songRepository.findAll();
+    cache.put(key, songs);
+    return songs;
+}
+</pre>
+
+<p>
+If the data already exists in the cache, the database is not queried.
+</p>
+
+<hr>
+
+<h2>4. Cache Invalidation</h2>
+
+<p>
+To avoid stale data, the cache is invalidated after any modification:
+</p>
+
+<ul>
+    <li>Create</li>
+    <li>Update</li>
+    <li>Delete</li>
+</ul>
+
+<h3>Example: Cache Invalidation on Update</h3>
+
+<pre>
+public Song update(Long id, Song updated) {
+    Song song = getById(id);
+    song.setTitle(updated.getTitle());
+    song.setArtist(updated.getArtist());
+    song.setAlbum(updated.getAlbum());
+
+    Song saved = songRepository.save(song);
+    SimpleCache.getInstance().remove("songs_all");
+
+    return saved;
+}
+</pre>
+
+<div class="note">
+<b>Defense explanation:</b><br>
+Cache invalidation ensures data consistency while keeping performance benefits.
+</div>
+
+<hr>
+
+<h2>5. SOLID Principles in Cache Design</h2>
+
+<ul>
+    <li><b>Single Responsibility</b> — cache only stores data</li>
+    <li><b>Open/Closed</b> — cache logic can be extended</li>
+    <li><b>Dependency Inversion</b> — services control when cache is used</li>
+</ul>
+
+<p>
+The cache does not depend on repositories or controllers.
+</p>
+
+<hr>
+
+<h2>6. Why This Implementation Is Correct</h2>
+
+<ul>
+    <li>In-memory storage using <code>ConcurrentHashMap</code></li>
+    <li>Singleton pattern correctly implemented</li>
+    <li>No violation of layered architecture</li>
+    <li>Manual cache invalidation supported</li>
+    <li>Improved performance for frequent GET requests</li>
+</ul>
+
+<hr>
+
+<h2>7. Conclusion </h2>
+
+<p>
+This bonus task demonstrates how design patterns can be applied
+to solve real performance problems.
+The caching layer improves efficiency while maintaining clean architecture
+and adherence to OOP and SOLID principles.
+</p>
 
 </body>
 </html>

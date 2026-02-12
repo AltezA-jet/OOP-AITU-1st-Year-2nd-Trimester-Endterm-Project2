@@ -7,6 +7,7 @@ com\example\musiclibrary\repository\ArtistRepository.class
 com\example\musiclibrary\factory\MediaFactory.class
 com\example\musiclibrary\model\Podcast.class
 com\example\musiclibrary\model\Media.class
+com\example\musiclibrary\cache\SimpleCache.class
 com\example\musiclibrary\model\Playlist.class
 com\example\musiclibrary\controller\PodcastController.class
 com\example\musiclibrary\repository\AlbumRepository.class
